@@ -1,0 +1,28 @@
+fr:
+  helpers:
+    label:
+      fighter:
+        name: Nom
+        health_points: Points de vie
+        attack_strength: Force d'attaque
+    submit:
+      fighter:
+        create: Créer un combattant
+        update: Mettre à jour le combattant
+        delete: Supprimer combattant
+  activerecord:
+    attributes:
+      fighter:
+        name: Le nom du combattant
+        health_points: Le nombre de points de vie
+        attack_strength: Les points de force d'attaque
+    errors:
+      models:
+        fighter:
+          attributes:
+            name:
+              blank: ne peut pas être vide
+            health_points:
+              blank: ne peut pas être vide
+            attack_strength:
+              blank: ne peuvent pas être vide
