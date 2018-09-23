@@ -1,0 +1,11 @@
+<div class="col-sm">
+  <%= f.collection_select(id, fighters, :id, :full_info, {}, {class: 'custom-select'})%>
+  <div class="row mt-2" >
+    <div class="col-3">
+      avec un.e
+    </div>
+    <div class="col-9">
+      <%= f.select("weapon_#{id}", weapons, {}, {class: 'custom-select'})%>
+    </div>
+  </div>
+</div>

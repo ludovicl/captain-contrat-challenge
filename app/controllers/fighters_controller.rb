@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class FightersController < ApplicationController
-  before_action :set_fighter, only: [:show, :edit, :update, :destroy]
+  before_action :set_fighter, only: %i[show edit update destroy]
 
   # GET /fighters
   # GET /fighters.json
@@ -9,8 +11,7 @@ class FightersController < ApplicationController
 
   # GET /fighters/1
   # GET /fighters/1.json
-  def show
-  end
+  def show; end
 
   # GET /fighters/new
   def new
@@ -18,23 +19,19 @@ class FightersController < ApplicationController
   end
 
   # GET /fighters/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /fighters
   # POST /fighters.json
   def create
     @fighter = Fighter.new(fighter_params)
-
     respond_to do |format|
       if @fighter.save
-        format.html { redirect_to @fighter, notice: 'Fighter was successfully created.' }
-        format.json { render :show, status: :created, location: @fighter }
+        flash[:success] = 'Combattant créé'
+        format.html { redirect_to root_path }
       else
+        flash.now[:danger] = @fighter.errors.full_messages.first
         format.html { render :new }
-        flash[:danger] = @fighter.errors.full_messages.first
-
-        #format.json { render json: @fighter.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,12 +40,13 @@ class FightersController < ApplicationController
   # PATCH/PUT /fighters/1.json
   def update
     respond_to do |format|
-      if @fighter.update(fighter_params)
-        format.html { redirect_to @fighter, notice: 'Fighter was successfully updated.' }
-        format.json { render :show, status: :ok, location: @fighter }
+      if @fighter.update!(fighter_params)
+        flash[:success] = 'Combattant à jour'
+        format.html { redirect_to root_path }
+        # format.json { render :show, status: :ok, location: @fighter }
       else
+        flash.now[:danger] = @fighter.errors.full_messages.first
         format.html { render :edit }
-        #format.json { render json: @fighter.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,24 +56,23 @@ class FightersController < ApplicationController
   def destroy
     @fighter.destroy
     respond_to do |format|
-      flash[:info] = 'Combattant supprimé'
+      flash.now[:info] = 'Combattant supprimé'
       format.html { redirect_to fighters_url }
       format.json { head :no_content }
     end
   end
 
-  def home
-
-  end
+  def home; end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_fighter
-      @fighter = Fighter.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def fighter_params
-      params.require(:fighter).permit(:name, :health_points, :attack_strength)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_fighter
+    @fighter = Fighter.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def fighter_params
+    params.require(:fighter).permit(:name, :health_points, :attack_strength, :avatar)
+  end
 end

@@ -1,1 +1,3 @@
-json.partial! "fighters/fighter", fighter: @fighter
+# frozen_string_literal: true
+
+json.partial! 'fighters/fighter', fighter: @fighter

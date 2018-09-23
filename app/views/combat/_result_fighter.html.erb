@@ -1,0 +1,15 @@
+<strong><%= fighter.name %></strong>
+<br>
+<%= image_tag fighter.avatar, width: "100" %>
+<br>
+Vie à la fin du combat : <%= fighter.health_points %>
+<div class="row">
+  <div class="col-sm">
+    Coups donnés à l'adversaire :
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm">
+    <%= stats.join(' 🥊 ') %>
+  </div>
+</div>

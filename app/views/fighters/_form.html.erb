@@ -1,44 +1,26 @@
 <%= form_with(model: fighter, local: true) do |form| %>
- <!-- <%# if fighter.errors.any? %>
-    <div id="error_explanation">
-      <h2><%#= pluralize(fighter.errors.count, "error") %> prohibited this fighter from being saved:</h2>
-
-      <ul>
-      <%# fighter.errors.full_messages.each do |message| %>
-        <li><%#= message %></li>
-      <%# end %>
-      </ul>
+  <div class="row">
+    <div class="form-group col">
+      <%= form.label :name %>
+      <%= form.text_field :name, placeholder: true, class: "form-control" %>
     </div>
-  <%# end %>-->
 
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text">
-        <%= form.label :name %>
-      </span>
+    <div class="form-group col">
+      <%= form.label :health_points %>
+      <%= form.number_field :health_points, placeholder: true, class: "form-control" %>
     </div>
-    <%= form.text_field :name, placeholder: true %>
+    <div class="form-group col">
+      <%= form.label :attack_strength %>
+      <%= form.number_field :attack_strength, placeholder: true, class: "form-control" %>
+    </div>
+    <div class="form-group col">
+      <%= form.label :avatar %>
+      <%= form.file_field :avatar, direct_upload: true %>
+    </div>
   </div>
-
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text">
-          <%= form.label :health_points %>
-        </span>
+  <div class="row mt-4">
+    <div class="col text-center" >
+      <%= form.submit class: 'btn btn-secondary btn-lg' %>
     </div>
-    <%= form.number_field :health_points, placeholder: true %>
-  </div>
-
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text">
-          <%= form.label :attack_strength %>
-        </span>
-    </div>
-    <%= form.number_field :attack_strength, placeholder: true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit class: 'btn btn-light' %>
   </div>
 <% end %>

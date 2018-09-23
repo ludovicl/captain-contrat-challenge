@@ -1,0 +1,23 @@
+<div class="text-center">
+  <h1>Résultat du combat</h1>
+    <div class="container mt-4">
+
+      <%= image_tag('result.gif') %>
+
+      <div class="row">
+
+        <div class="col-sm">
+          <h3>Vainqueur <i class="fas fa-thumbs-up"></i></h3>
+          <%= render 'result_fighter', fighter: @result[:winner][:fighter], stats: @result[:winner][:stats] %>
+        </div>
+
+        <div class="col-sm">
+          <h3>Perdant <i class="fas fa-thumbs-down"></i></h3>
+          <%= render 'result_fighter', fighter: @result[:looser][:fighter], stats: @result[:looser][:stats] %>
+        </div>
+      </div>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,24 @@
+<div class="text-center">
+
+  <h1>Selectionnez deux combattants</h1>
+
+  <%= form_for(:fighter, url: combat_result_path) do |f| %>
+
+    <div class="container mt-4">
+      <div class="row">
+        <%= render 'select_fighter', id: 1, fighters: @fighters, weapons: @weapons, f: f %>
+        <div class="col-xs">
+          vs
+        </div>
+        <%= render 'select_fighter', id: 2, fighters: @fighters, weapons: @weapons, f: f %>
+      </div>
+
+      <div class="row mt-4">
+      <div class="col text-center" >
+        <%= f.submit 'Combattre!', class: 'btn btn-danger' %>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+  </div>

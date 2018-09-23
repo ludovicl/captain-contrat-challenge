@@ -1,24 +1,20 @@
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+<div class="pt-5 text-center">
   <h1>Captain Arena</h1>
-  <h4> Soit le Bienvenu sur le pont moussaillon !</h4>
-  <p> Tu peux créer des pirates et les faire combattre jusqu'à la mort.</p>
+  <h4> Sois le bienvenu sur le pont moussaillon ! 🏴‍☠️</h4>
+  <p> Tu peux créer des pirates et les faire s'affronter dans des combats amicaux</p>
   <hr>
 </div>
-
 
 <div class="container">
   <div class="row">
     <div class="col-md">
-      <%= link_to ' Visualier les combatants', fighters_path, class: "btn btn-secondary btn-lg fas fa-eye" %>
+      <%= link_to ' Visualier les combattants', fighters_path, class: "btn btn-secondary btn-lg fas fa-eye" %>
     </div>
     <div class="col-md">
-      <%= link_to ' Ajouter un combatant', new_fighter_path, class: "btn btn-secondary btn-lg fas fa-plus-circle" %>
+      <%= link_to ' Ajouter un combattant', new_fighter_path, class: "btn btn-secondary btn-lg fas fa-plus-circle" %>
     </div>
     <div class="col-md">
-      <a class="btn btn-secondary btn-lg fas fa-cross" href="#" role="button"> Combattre !</a>
+      <%= link_to ' Combattre !', combat_lobby_path, class: "btn btn-secondary btn-lg fas fa-cross" %>
     </div>
   </div>
-</div>
-</div>
-
 </div>

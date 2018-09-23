@@ -1,0 +1,17 @@
+{
+  "epée": {
+    "attack": 5,
+    "defense": 2,
+    "icone": "🗡"
+  },
+  "bouclier": {
+    "attack": 2,
+    "defense": 4,
+    "icone": "🛡"
+  },
+  "grenade": {
+    "attack": 6,
+    "defense": 0,
+    "icone": "💣"
+  }
+}
