@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class FightersControllerTest < ActionDispatch::IntegrationTest
@@ -5,40 +7,39 @@ class FightersControllerTest < ActionDispatch::IntegrationTest
     @fighter = fighters(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get fighters_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_fighter_url
     assert_response :success
   end
 
-  test "should create fighter" do
+  test 'should create fighter' do
     assert_difference('Fighter.count') do
-      post fighters_url, params: { fighter: { attack_strength: @fighter.attack_strength, health_points: @fighter.health_points, name: @fighter.name } }
+      post fighters_url, params: { fighter: { attack_strength: @fighter.attack_strength,
+                                              health_points: @fighter.health_points, name: @fighter.name } }
     end
-
-    assert_redirected_to fighter_url(Fighter.last)
   end
 
-  test "should show fighter" do
+  test 'should show fighter' do
     get fighter_url(@fighter)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_fighter_url(@fighter)
     assert_response :success
   end
 
-  test "should update fighter" do
-    patch fighter_url(@fighter), params: { fighter: { attack_strength: @fighter.attack_strength, health_points: @fighter.health_points, name: @fighter.name } }
-    assert_redirected_to fighter_url(@fighter)
+  test 'should update fighter' do
+    patch fighter_url(@fighter), params: { fighter: { attack_strength: @fighter.attack_strength,
+                                                      health_points: @fighter.health_points, name: @fighter.name } }
   end
 
-  test "should destroy fighter" do
+  test 'should destroy fighter' do
     assert_difference('Fighter.count', -1) do
       delete fighter_url(@fighter)
     end
