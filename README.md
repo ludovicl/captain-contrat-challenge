@@ -1,3 +1,15 @@
+
+# Usage
+With rails >= 5.2
+~~~~sh
+bundle
+rake db:setup
+rails s
+~~~~
+
+[https://ludovicl-captain-contrat.herokuapp.com](https://ludovicl-captain-contrat.herokuapp.com)
+
+
 Ce fichier contient le sujet du test que passent les candidats à un poste de dévelopeur chez Captain Contrat.  
 Plus d'infos sur [notre page jobs](https://jobs.captaincontrat.com/)
 
