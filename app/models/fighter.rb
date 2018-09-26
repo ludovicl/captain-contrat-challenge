@@ -2,7 +2,9 @@
 
 class Fighter < ApplicationRecord
   has_one_attached :avatar, dependent: :destroy
-  has_many :combats
+  has_many :combat_wins, class_name: "Combat", foreign_key: "winner_id"
+  has_many :combat_looses, class_name: "Combat", foreign_key: "looser_id"
+
   validates :name, presence: true, allow_blank: false, length: { maximum: 20 }
   validates :health_points, presence: true, allow_blank: false, numericality: { greater_than_or_equal_to: 1 }
   validates :attack_strength, presence: true, allow_blank: false, numericality: { greater_than_or_equal_to: 1 }
@@ -17,11 +19,11 @@ class Fighter < ApplicationRecord
   end
 
   def number_wins
-    Combat.where(winner: self).count
+    self.combat_wins.count
   end
 
   def number_looses
-    Combat.where(looser: self).count
+    self.combat_looses.count
   end
 
   private
