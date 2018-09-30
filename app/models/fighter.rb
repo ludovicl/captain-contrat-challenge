@@ -2,8 +2,8 @@
 
 class Fighter < ApplicationRecord
   has_one_attached :avatar, dependent: :destroy
-  has_many :combat_wins, class_name: "Combat", foreign_key: "winner_id"
-  has_many :combat_looses, class_name: "Combat", foreign_key: "looser_id"
+  has_many :combat_wins, class_name: 'Combat', foreign_key: 'winner_id'
+  has_many :combat_looses, class_name: 'Combat', foreign_key: 'looser_id'
 
   validates :name, presence: true, allow_blank: false, length: { maximum: 20 }
   validates :health_points, presence: true, allow_blank: false, numericality: { greater_than_or_equal_to: 1 }
@@ -19,11 +19,11 @@ class Fighter < ApplicationRecord
   end
 
   def number_wins
-    self.combat_wins.count
+    combat_wins.count
   end
 
   def number_looses
-    self.combat_looses.count
+    combat_looses.count
   end
 
   private
@@ -42,12 +42,12 @@ class Fighter < ApplicationRecord
   # Apply a random number on 100 if health_points are > 100
   def conform_health_points
     rng = rand(0.7..0.9)
-    self.health_points = health_points > 100 * rng ? (100 * rng).to_i : health_points
+    self.health_points = (health_points > 100 * rng) && new_record? ? (100 * rng).to_i : health_points
   end
 
   # Apply a random number on 20 if attack_strength are > 100
   def conform_attack_strength
     rng = rand(0.7..0.9)
-    self.attack_strength = attack_strength > 20 * rng ? (20 * rng).to_i : attack_strength
+    self.attack_strength = (attack_strength > 20 * rng) && new_record? ? (20 * rng).to_i : attack_strength
   end
 end

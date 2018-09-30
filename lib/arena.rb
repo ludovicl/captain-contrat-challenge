@@ -4,7 +4,6 @@ module Arena
   mattr_accessor :fighter1_attacks, :fighter2_attacks
   mattr_accessor :fighter1, :fighter2
   class << self
-
     ##
     # This function confront two fighters, each attack is weighted by a random number
     # Input : fighter1, Fighter who will start the round
@@ -50,18 +49,17 @@ module Arena
 
     def assign_weapon(weapon1, weapon2)
       if weapon1
-        as, hp  = get_weapon_charact(weapon1)
+        as, hp = get_weapon_charact(weapon1)
         fighter1.health_points += hp
         fighter1.attack_strength += as
       end
 
-      if weapon2
-        as, hp = get_weapon_charact(weapon2)
-        fighter2.health_points += hp
-        fighter2.attack_strength += as
-      end
-    end
+      return unless weapon2
 
+      as, hp = get_weapon_charact(weapon2)
+      fighter2.health_points += hp
+      fighter2.attack_strength += as
+    end
 
     def serialize(winner, looser)
       {

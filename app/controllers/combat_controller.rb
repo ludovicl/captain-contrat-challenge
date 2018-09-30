@@ -10,11 +10,12 @@ class CombatController < ApplicationController
   end
 
   def result
-    @result = Arena.result(@fighter1, @fighter2, params["fighter"]["weapon_1"], params["fighter"]["weapon_2"])
+    @result = Arena.result(@fighter1, @fighter2, params['fighter']['weapon_1'], params['fighter']['weapon_2'])
   end
 
   def assign_fighter
-    @fighter1 = Fighter.find(params['fighter']['1'])
-    @fighter2 = Fighter.find(params['fighter']['2'])
+    @fighter1 = Fighter.find_by(id: params['fighter']['1'])
+    @fighter2 = Fighter.find_by(id: params['fighter']['2'])
+    redirect_to combat_lobby_path if @fighter1.nil? || @fighter2.nil?
   end
 end

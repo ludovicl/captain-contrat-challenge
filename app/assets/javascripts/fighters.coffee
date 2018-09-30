@@ -2,17 +2,20 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+setHardcore = -> $(".navbar").addClass('hardcore')
+removeHardcore = -> $(".navbar").removeClass('hardcore')
+
 $(document)
   .on "turbolinks:load", ->
-    is_hardcore = localStorage.getItem("hardcore")
-    if is_hardcore == "true"
-      $(".navbar").addClass('hardcore')
+    isHardcore = localStorage.getItem("hardcore")
+    if isHardcore == "true"
+      setHardcore()
   .on "click", "#hardcore", ->
-    is_hardcore = localStorage.getItem("hardcore")
-    if is_hardcore != "true"
-      $(".navbar").addClass('hardcore')
+    isHardcore = localStorage.getItem("hardcore")
+    if isHardcore != "true"
+      setHardcore()
       localStorage.setItem("hardcore","true")
     else
-      $(".navbar").removeClass('hardcore')
+      removeHardcore()
       localStorage.setItem("hardcore","false")
 
